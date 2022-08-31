@@ -11,13 +11,14 @@ const savingRoute = require('./routes/SavingRoute')
 
 const app = express();
 dotenv.config()
-app.use(express.static(path.join(__dirname, 'client','build')));
+app.use(express.static('public'));
 app.use(express.json());
 
 app.use('/api/users/' , userRoute)
 app.use('/api/transactions/' , transactionRoute)
 app.use('/api/saving/', savingRoute)
-app.get("*", function (req, res) {res.sendFile(path.join(__dirname, "client", "build", "index.html"))})
+app.get("*", function (req, res)
+ {res.sendFile(path.join(__dirname, "public", "index.html"))})
 connectDB()
 
 
